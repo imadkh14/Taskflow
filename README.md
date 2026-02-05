@@ -1,255 +1,196 @@
-# Taskflow
+# TaskFlow — Full-Stack Task Manager
 
-Une application moderne de gestion de tâches full-stack avec Spring Boot et React.
+A modern full-stack task management application built with **Spring Boot** and **React**.
 
-## 📋 Description
+---
 
-Taskflow est une application web complète permettant de gérer des listes de tâches et des tâches individuelles. Elle offre une interface utilisateur intuitive et une API REST robuste pour créer, organiser et suivre vos tâches quotidiennes.
+## Overview
 
-## ✨ Fonctionnalités
+TaskFlow is a productivity web app that lets users create task lists, manage tasks, and track progress through a clean dashboard interface.
+The project demonstrates a complete full-stack architecture with a REST API and a modern React frontend.
 
-- ✅ Créer, modifier et supprimer des listes de tâches
-- ✅ Gérer des tâches avec priorités (LOW, MEDIUM, HIGH)
-- ✅ Suivre le statut des tâches (PENDING, IN_PROGRESS, COMPLETED)
-- ✅ Interface utilisateur réactive et moderne
-- ✅ API REST complète
-- ✅ Gestion globale des erreurs
-- ✅ Support CORS configuré
+---
 
-## 🛠️ Stack Technique
+## Key Features
+
+### Task Lists
+
+* Create, update and delete task lists
+* Optional descriptions
+* Automatic completion progress tracking
+
+### Tasks
+
+* Create, edit and delete tasks inside lists
+* Priority levels: **Low, Medium, High**
+* Status tracking: **Pending, In-Progress, Completed**
+* Due dates support
+* Progress indicators
+
+### Platform Features
+
+* RESTful API
+* Global error handling
+* CORS configuration
+* Responsive UI with animations
+
+---
+
+## Tech Stack
 
 ### Backend
 
-- **Java 21**
-- **Spring Boot 3.5.3**
-- **Spring Data JPA**
-- **MySQL** - Base de données
-- **Maven** - Gestion des dépendances
+* Java 21
+* Spring Boot 3
+* Spring Data JPA
+* MySQL
+* Maven
 
 ### Frontend
 
-- **React 19.2.4**
-- **Vite 7.3.1** - Build tool
-- **TailwindCSS 4.1.18** - Styling
-- **React Router 7.13.0** - Navigation
-- **TanStack React Query 5.90.20** - Gestion d'état serveur
-- **Axios** - HTTP client
-- **Framer Motion** - Animations
-- **Lucide React** - Icônes
-- **React Hot Toast** - Notifications
+* React + Vite
+* TailwindCSS
+* React Router
+* TanStack React Query
+* Axios
+* Framer Motion
+* Lucide Icons
+* React Hot Toast
 
-## 📋 Prérequis
+---
 
-Avant de commencer, assurez-vous d'avoir installé :
+## Getting Started
 
-- **Java JDK 21** ou supérieur
-- **Maven 3.6+**
-- **Node.js 18+** et npm
-- **MySQL 8.0+**
-- Un IDE (IntelliJ IDEA, VS Code, etc.)
+### Prerequisites
 
-## 🚀 Installation
+* Java 21+
+* Maven 3.6+
+* Node.js 18+
+* MySQL 8+
+* IDE (IntelliJ / VS Code)
 
-### 1. Cloner le projet
+---
+
+## Installation
+
+### 1. Clone the repository
 
 ```bash
 git clone <repository-url>
 cd tasksapp
 ```
 
-### 2. Configuration de la base de données
-
-Créez une base de données MySQL :
+### 2. Create the database
 
 ```sql
 CREATE DATABASE tasksapp_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-### 3. Configuration du Backend
+### 3. Configure the backend
 
-Modifiez le fichier `backend/src/main/resources/application.properties` :
+Edit:
+
+`backend/src/main/resources/application.properties`
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/tasksapp_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://localhost:3306/tasksapp_db
 spring.datasource.username=root
-spring.datasource.password=votre_mot_de_passe
+spring.datasource.password=YOUR_PASSWORD
 ```
 
-Installez les dépendances et compilez :
+Install dependencies:
 
 ```bash
 cd backend
 mvn clean install
 ```
 
-### 4. Configuration du Frontend
-
-Installez les dépendances npm :
+### 4. Install frontend dependencies
 
 ```bash
 cd frontend
 npm install
 ```
 
-## 🏃 Démarrage de l'application
+---
 
-### Démarrer le Backend
+## Run the Application
+
+### Start Backend
 
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
-Le serveur backend sera disponible sur `http://localhost:8080`
+Backend runs on **[http://localhost:8080](http://localhost:8080)**
 
-### Démarrer le Frontend
+### Start Frontend
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-L'interface utilisateur sera disponible sur `http://localhost:5173`
+Frontend runs on **[http://localhost:5173](http://localhost:5173)**
 
-## 📚 API Endpoints
+---
+
+## API Overview
 
 ### Task Lists
 
-| Méthode | Endpoint                       | Description                    |
-| ------- | ------------------------------ | ------------------------------ |
-| GET     | `/api/taskLists`               | Récupérer toutes les listes    |
-| POST    | `/api/taskLists`               | Créer une nouvelle liste       |
-| GET     | `/api/taskLists/{tasklist_id}` | Récupérer une liste spécifique |
-| PUT     | `/api/taskLists/{tasklist_id}` | Mettre à jour une liste        |
-| DELETE  | `/api/taskLists/{tasklist_id}` | Supprimer une liste            |
+| Method | Endpoint              | Description   |
+| ------ | --------------------- | ------------- |
+| GET    | `/api/taskLists`      | Get all lists |
+| POST   | `/api/taskLists`      | Create list   |
+| GET    | `/api/taskLists/{id}` | Get list      |
+| PUT    | `/api/taskLists/{id}` | Update list   |
+| DELETE | `/api/taskLists/{id}` | Delete list   |
 
 ### Tasks
 
-| Méthode | Endpoint                             | Description                             |
-| ------- | ------------------------------------ | --------------------------------------- |
-| GET     | `/api/{tasklist_id}/tasks`           | Récupérer toutes les tâches d'une liste |
-| POST    | `/api/{tasklist_id}/tasks`           | Créer une nouvelle tâche                |
-| GET     | `/api/{tasklist_id}/tasks/{task_id}` | Récupérer une tâche spécifique          |
-| PUT     | `/api/{tasklist_id}/tasks/{task_id}` | Mettre à jour une tâche                 |
-| DELETE  | `/api/{tasklist_id}/tasks/{task_id}` | Supprimer une tâche                     |
+| Method | Endpoint                       | Description |
+| ------ | ------------------------------ | ----------- |
+| GET    | `/api/{listId}/tasks`          | Get tasks   |
+| POST   | `/api/{listId}/tasks`          | Create task |
+| GET    | `/api/{listId}/tasks/{taskId}` | Get task    |
+| PUT    | `/api/{listId}/tasks/{taskId}` | Update task |
+| DELETE | `/api/{listId}/tasks/{taskId}` | Delete task |
 
-### Exemple de requête - Créer une TaskList
+---
 
-```json
-POST /api/taskLists
-Content-Type: application/json
-
-{
-  "name": "Mes tâches du jour",
-  "description": "Liste des tâches à accomplir aujourd'hui"
-}
-```
-
-### Exemple de requête - Créer une Task
-
-```json
-POST /api/{tasklist_id}/tasks
-Content-Type: application/json
-
-{
-  "title": "Finir le rapport",
-  "description": "Compléter le rapport mensuel",
-  "priority": "HIGH",
-  "status": "PENDING",
-  "dueDate": "2026-02-10T10:00:00"
-}
-```
-
-## 📁 Structure du Projet
+## Project Structure
 
 ```
 tasksapp/
-├── backend/
-│   ├── src/main/java/com/imaddev/tasksapp/
-│   │   ├── config/          # Configuration (CORS, etc.)
-│   │   ├── controllers/     # Contrôleurs REST
-│   │   ├── dto/            # Data Transfer Objects
-│   │   ├── entity/         # Entités JPA
-│   │   ├── mappers/        # Mappers DTO <-> Entity
-│   │   ├── repositories/   # Repositories JPA
-│   │   └── services/       # Logique métier
-│   └── src/main/resources/
-│       └── application.properties
-│
-└── frontend/
-    ├── src/
-    │   ├── api/            # Services API
-    │   ├── components/     # Composants réutilisables
-    │   ├── hooks/          # Custom hooks React
-    │   ├── pages/          # Pages de l'application
-    │   ├── App.jsx         # Composant principal
-    │   └── main.jsx        # Point d'entrée
-    └── package.json
+├── backend/   # Spring Boot REST API
+└── frontend/  # React application
 ```
 
-## 🎨 Modèles de Données
+---
 
-### TaskList
-
-- `id` (UUID)
-- `name` (String)
-- `description` (String)
-- `createdAt` (LocalDateTime)
-- `updatedAt` (LocalDateTime)
-
-### Task
-
-- `id` (UUID)
-- `title` (String)
-- `description` (String)
-- `priority` (LOW | MEDIUM | HIGH)
-- `status` (PENDING | IN_PROGRESS | COMPLETED)
-- `dueDate` (LocalDateTime)
-- `taskList` (TaskList)
-- `createdAt` (LocalDateTime)
-- `updatedAt` (LocalDateTime)
-
-## 🔧 Scripts disponibles
+## Available Scripts
 
 ### Backend
 
 ```bash
-mvn clean install    # Installer les dépendances
-mvn spring-boot:run  # Démarrer l'application
-mvn test            # Lancer les tests
+mvn spring-boot:run
+mvn test
 ```
 
 ### Frontend
 
 ```bash
-npm install         # Installer les dépendances
-npm run dev        # Mode développement
-npm run build      # Build de production
-npm run preview    # Prévisualiser le build
+npm run dev
+npm run build
+npm run preview
 ```
-
-## 🐛 Dépannage
-
-### Problème de connexion à la base de données
-
-- Vérifiez que MySQL est démarré
-- Vérifiez les credentials dans `application.properties`
-- Assurez-vous que la base de données `tasksapp_db` existe
-
-### Erreur CORS
-
-- Le backend est configuré pour accepter les requêtes depuis `http://localhost:5173`
-- Modifiez `CorsConfig.java` si vous utilisez un autre port
-
-### Port déjà utilisé
-
-- Backend : Changez le port dans `application.properties` avec `server.port=8081`
-- Frontend : Modifiez `vite.config.js` pour changer le port
-
-## 👨‍💻 Auteur
-
-Développé par **kh.imad**
 
 ---
 
-⭐ Si vous aimez ce projet, n'hésitez pas à lui donner une étoile !
+## Author
+
+Built by **Imad**
+
+If you like the project, consider giving it a ⭐
