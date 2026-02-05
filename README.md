@@ -248,11 +248,7 @@ npm run preview    # Prévisualiser le build
 
 ## 👨‍💻 Auteur
 
-Développé par **imaddev**
-
-## 📝 License
-
-Ce projet est sous licence MIT.
+Développé par **kh.imad**
 
 ---
 
